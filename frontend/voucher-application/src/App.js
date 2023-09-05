@@ -4,7 +4,7 @@ import Form from './componets/Form';
 import Alert from './componets/Alert';
 import { useState } from 'react';
 function App() {
-  const [isAlert,isAlertSet]=useState({posivite:false,is:true,message:""})
+  const [isAlert,isAlertSet]=useState({posivite:false,is:false,message:""})
   const updateHandler=(posivite,is,message)=>{
     isAlertSet(prev=>({message:message,is:is,posivite:posivite}))
   }

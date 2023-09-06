@@ -14,20 +14,21 @@ function Form(props){
         let result=await response.json()
         console.log(result)
         if(result.message==='kod został zrealizowany poprawnie'){
-            props.updateHandler(true,true,result.message)
-            setTimeout(()=>{
-                props.updateHandler(false,false,'')
-            },10000)
+            props.updateHandler(true,result.message)
+            // setTimeout(()=>{
+            //     props.updateHandler(false,false,'')
+            // },1000)
         }else{
-            props.updateHandler(false,true,result.message)
-            setTimeout(()=>{
-                props.updateHandler(false,false,'')
-            },10000)
+            props.updateHandler(false,result.message)
+            // setTimeout(()=>{
+            //     props.updateHandler(false,false,'')
+            // },1000)
         }
         
     }
 
-    return(<form className="form w-1/2 flex mx-auto flex-col mt-5" onSubmit={handleSubmit(submit)}>
+    return(<form className="form w-1/2 flex mx-auto flex-col mt-5 p-5 bg-cyan-600 rounded" onSubmit={handleSubmit(submit)}>
+        <h1 className="mb-4"style={{fontSize:"3rem"}}>Formularz Zgłoszeniowy</h1>
         <label className="form-label text-2xl">Podaj kod</label>
         <input className="form-control w-1/2 self-center" {...register("voucherCode",{
                         required:{
@@ -68,7 +69,7 @@ function Form(props){
                         }})}></input>
         {errors.country&&<p className="text-red-600">{errors.country.message}</p>}
 
-        <button className="btn btn-primary w-1/2 self-center" type='submit'>Prześlij Formularz</button>
+        <button className="btn btn-primary w-1/2 self-center text-2xl" type='submit'>Prześlij Formularz</button>
     </form>)
 }
 
